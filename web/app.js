@@ -9,6 +9,7 @@
 (() => {
   'use strict';
 
+  const LOCAL_URL = 'http://127.0.0.1:8000';
   const LOCAL_WS = 'ws://127.0.0.1:8000/ws/metrics';
   const HISTORY = 120;
   const CAT_NAMES = { black: 'Thor', tabby: 'Hela' };
@@ -20,8 +21,8 @@
       demoNote: 'Datos simulados para que puedas probarlo.',
       demoHow: '¿Ver tu propio PC?',
       liveNote: (h) => `Datos reales de ${h}, actualizados cada segundo.`,
-      failed: 'No encuentro el monitor en tu PC. Arráncalo con «python -m monitor» y vuelve a intentarlo.',
-      lost: 'Se ha perdido la conexión con tu PC: vuelvo a la demo.',
+      failed: (url) => `No he podido conectar con tu PC. Comprueba que el monitor está arrancado («python -m monitor») y, si el navegador te pide permiso para acceder a la red local, acéptalo. También puedes abrirlo directamente en ${url}.`,
+      lost: () => 'Se ha perdido la conexión con tu PC: vuelvo a la demo.',
       cpu: 'CPU', memory: 'Memoria', network: 'Red', disks: 'Discos', processes: 'Procesos', system: 'Sistema',
       last: 'últimos 2 min',
       memDetail: (u, t, s) => `<b>${u}</b> usados de ${t} · swap ${s} %`,
@@ -48,8 +49,8 @@
       demoNote: 'Simulated data so you can try it out.',
       demoHow: 'Monitor your own PC?',
       liveNote: (h) => `Real data from ${h}, updated every second.`,
-      failed: 'Could not find the monitor on your PC. Start it with "python -m monitor" and try again.',
-      lost: 'Lost connection to your PC: back to the demo.',
+      failed: (url) => `Could not connect to your PC. Make sure the monitor is running ("python -m monitor") and, if your browser asks for permission to access the local network, allow it. You can also open it directly at ${url}.`,
+      lost: () => 'Lost connection to your PC: back to the demo.',
       cpu: 'CPU', memory: 'Memory', network: 'Network', disks: 'Disks', processes: 'Processes', system: 'System',
       last: 'last 2 min',
       memDetail: (u, t, s) => `<b>${u}</b> used of ${t} · swap ${s} %`,
@@ -181,8 +182,9 @@
       btn.textContent = t().connecting;
     } else {
       pill.textContent = t().demo;
+      const localLink = `<a href="${LOCAL_URL}" target="_blank" rel="noopener">${LOCAL_URL.replace('http://', '')}</a>`;
       note.innerHTML = state.error
-        ? esc(state.error)
+        ? t()[state.error](localLink)
         : `${esc(t().demoNote)} <a href="https://github.com/Zulema1904/zulemaos-monitor#readme" target="_blank" rel="noopener">${esc(t().demoHow)}</a>`;
       btn.textContent = t().connect;
     }
@@ -293,7 +295,7 @@
     ws.onclose = () => {
       clearTimeout(timeout);
       if (closedByUs) return;
-      startDemo(silent && !opened ? '' : opened ? t().lost : t().failed);
+      startDemo(silent && !opened ? '' : opened ? 'lost' : 'failed');
     };
     stopSource = () => { closedByUs = true; clearTimeout(timeout); ws.close(); };
   }

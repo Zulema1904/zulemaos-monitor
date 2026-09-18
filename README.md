@@ -60,6 +60,11 @@ python -m monitor
 ```
 
 Se abrirá el navegador en http://127.0.0.1:8000. Opciones: `--port 9000`, `--no-browser`.
+
+Con el servidor en marcha también puedes pulsar **"Conectar a mi PC"** desde la
+[demo publicada](https://zulema1904.github.io/monitor/) o desde Monitor.exe en ZulemaOS.
+Los navegadores modernos piden permiso cuando una web pública quiere conectarse a tu propio
+equipo (*acceso a la red local*): acéptalo, o abre directamente http://127.0.0.1:8000.
 Para probar sólo el recolector en la terminal: `python -m monitor.collector`.
 
 ## API
