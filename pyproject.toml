@@ -1,0 +1,17 @@
+[project]
+name = "zulemaos-monitor"
+version = "0.2.0"
+description = "Monitor de sistema en tiempo real con FastAPI, WebSocket y psutil, con interfaz web retro."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Zulema Gutiérrez" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Permite importar el paquete "monitor" aunque se ejecute "pytest" a secas
+pythonpath = ["."]
+filterwarnings = [
+    # Avisos internos de las librerías, no de este proyecto
+    "ignore::DeprecationWarning:starlette.*",
+    "ignore::DeprecationWarning:fastapi.*",
+]
