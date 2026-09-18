@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZulemaOS Monitor</title>
+  <meta name="description" content="Monitor de sistema en tiempo real (Python + FastAPI + psutil) con interfaz retro. Por Zulema Gutiérrez.">
+  <meta name="theme-color" content="#6a4fd8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%23120f2e'/%3E%3Cpath fill='%239dffb0' d='M1 11h3V8h2v2h2V5h2v4h2V3h2v8h1v1H1z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="titlebar">
+      <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="1" width="16" height="12" fill="#1d1a3f"/><rect x="1" y="2" width="14" height="10" fill="#120f2e"/><path fill="#9dffb0" d="M2 9h2V7h2v2h2V4h2v3h2V5h2v5H2z"/><rect x="5" y="13" width="6" height="2" fill="#1d1a3f"/></svg>
+      <h1>ZulemaOS Monitor</h1>
+      <span class="tb-sub" id="host"></span>
+    </header>
+
+    <div class="toolbar">
+      <span id="status" class="pill"></span>
+      <p id="note" class="note" aria-live="polite"></p>
+      <div class="tools">
+        <button id="connect" class="btn primary"></button>
+        <button id="lang" class="btn"></button>
+      </div>
+    </div>
+
+    <main class="grid">
+      <section class="card span-2" id="card-cpu">
+        <header class="card-h"><h2><span data-t="cpu"></span> <small data-t="last"></small></h2><span class="card-v" id="cpu-v">–</span></header>
+        <div class="card-body">
+          <canvas class="chart" id="cpu-chart" aria-hidden="true"></canvas>
+          <div class="cores" id="cores"></div>
+        </div>
+      </section>
+
+      <section class="card" id="card-mem">
+        <header class="card-h"><h2 data-t="memory"></h2><span class="card-v" id="mem-v">–</span></header>
+        <div class="card-body">
+          <canvas class="chart" id="mem-chart" aria-hidden="true"></canvas>
+          <p class="detail" id="mem-d"></p>
+        </div>
+      </section>
+
+      <section class="card" id="card-net">
+        <header class="card-h"><h2 data-t="network"></h2><span class="card-v small"><span class="down" id="down-v"></span><span class="up" id="up-v"></span></span></header>
+        <div class="card-body">
+          <canvas class="chart" id="net-chart" aria-hidden="true"></canvas>
+          <p class="detail" id="net-d"></p>
+        </div>
+      </section>
+
+      <section class="card span-2" id="card-procs">
+        <header class="card-h"><h2 data-t="processes"></h2></header>
+        <div class="card-body">
+          <table class="procs">
+            <thead><tr id="procs-head"><th></th><th class="num"></th><th></th><th class="num"></th></tr></thead>
+            <tbody id="procs"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" id="card-disks">
+        <header class="card-h"><h2 data-t="disks"></h2></header>
+        <div class="card-body"><ul class="disks" id="disks"></ul></div>
+      </section>
+
+      <section class="card span-2" id="card-sys">
+        <header class="card-h"><h2 data-t="system"></h2></header>
+        <div class="card-body"><dl class="sys" id="sys"></dl></div>
+      </section>
+    </main>
+
+    <section class="cats" aria-label="Thor y Hela">
+      <p class="cat-status" id="cat-status" aria-live="polite"></p>
+      <div class="floor" id="floor"></div>
+    </section>
+
+    <footer class="foot">
+      <span id="foot-text"></span> ·
+      <a id="foot-code" href="https://github.com/Zulema1904/zulemaos-monitor" target="_blank" rel="noopener"></a>
+    </footer>
+  </div>
+
+  <script src="sprites.js"></script>
+  <script src="demo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
