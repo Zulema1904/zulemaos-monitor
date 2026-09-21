@@ -117,7 +117,7 @@
           history,
           system: {
             hostname: 'ZULEMA-PC',
-            os: 'ZulemaOS 1.0 (demo)',
+            os: 'Zulema Gutiérrez 1.0 (demo)',
             os_version: '1.0',
             cpu_model: 'Intel(R) Core(TM) i7 · datos simulados',
             cores_physical: 8,

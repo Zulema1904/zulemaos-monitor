@@ -1,4 +1,4 @@
-/* ZulemaOS Monitor · estilos retro (misma paleta que ZulemaOS) */
+/* ZulemaOS Monitor · estilos retro (misma paleta que el portfolio) */
 
 :root {
   --ink: #1d1a3f;
@@ -71,7 +71,7 @@ a { color: var(--blue); }
   border: 2px solid; border-color: var(--hi) var(--dk) var(--dk) var(--hi);
 }
 .embed .toolbar { margin-top: 0; }
-.embed #lang { display: none; } /* dentro de ZulemaOS el idioma lo decide el portfolio */
+.embed #lang { display: none; } /* dentro del portfolio, el idioma lo decide la web */
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 2px 10px;

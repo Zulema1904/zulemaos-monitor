@@ -4,7 +4,7 @@
  * Fuentes de datos:
  *   - En vivo: WebSocket al servidor Python (python -m monitor)
  *   - Demo:    datos simulados de demo.js (para GitHub Pages)
- * Parámetros de URL: ?lang=es|en  ?source=demo|live  ?embed (dentro de ZulemaOS)
+ * Parámetros de URL: ?lang=es|en  ?source=demo|live  ?embed (dentro del portfolio)
  */
 (() => {
   'use strict';
@@ -438,7 +438,7 @@
   paintStatic();
 
   // Servida por el propio servidor Python → en vivo. En cualquier otro sitio
-  // (GitHub Pages, dentro de ZulemaOS…) → demo, y el botón permite conectar.
+  // (GitHub Pages, dentro del portfolio…) → demo, y el botón permite conectar.
   const source = params.get('source');
   const servedByBackend = location.protocol === 'http:' && !params.has('embed')
     && ['127.0.0.1', 'localhost'].includes(location.hostname);
