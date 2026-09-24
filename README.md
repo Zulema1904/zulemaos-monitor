@@ -6,8 +6,8 @@ Monitor de sistema en tiempo real hecho con **Python, FastAPI y psutil**, con un
 y dos ayudantes muy especiales: **Thor y Hela**, mis gatos, que reaccionan a la carga de la CPU
 (duermen la siesta si el PC está tranquilo y corren por toda la casa cuando se pone al 100 %).
 
-**🔗 Demo en vivo:** https://zulema1904.github.io/monitor/ (con datos simulados)
-· También se abre como **Monitor.exe** dentro de mi portfolio, [ZulemaOS](https://zulema1904.github.io).
+**🔗 Demo en vivo:** https://zulemagutierrez.com/monitor/ (con datos simulados)
+· También se abre como **Monitor.exe** en el [escritorio retro de mi portfolio](https://zulemagutierrez.com/escritorio#app=monitor).
 
 ## Qué muestra
 
@@ -62,7 +62,7 @@ python -m monitor
 Se abrirá el navegador en http://127.0.0.1:8000. Opciones: `--port 9000`, `--no-browser`.
 
 Con el servidor en marcha también puedes pulsar **"Conectar a mi PC"** desde la
-[demo publicada](https://zulema1904.github.io/monitor/) o desde Monitor.exe en ZulemaOS.
+[demo publicada](https://zulemagutierrez.com/monitor/) o desde Monitor.exe en el escritorio de mi portfolio.
 Los navegadores modernos piden permiso cuando una web pública quiere conectarse a tu propio
 equipo (*acceso a la red local*): acéptalo, o abre directamente http://127.0.0.1:8000.
 Para probar sólo el recolector en la terminal: `python -m monitor.collector`.
@@ -106,4 +106,4 @@ tests/           pytest
 
 ---
 
-Hecho por **Zulema Gutiérrez** · [Portfolio](https://zulema1904.github.io) · [LinkedIn](https://www.linkedin.com/in/zulema-guti%C3%A9rrez-504397312)
+Hecho por **Zulema Gutiérrez** · [Portfolio](https://zulemagutierrez.com) · [LinkedIn](https://www.linkedin.com/in/zulema-guti%C3%A9rrez)

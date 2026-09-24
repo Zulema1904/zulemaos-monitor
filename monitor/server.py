@@ -32,7 +32,8 @@ WEB_DIR = Path(__file__).resolve().parent.parent / "web"
 ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "http://localhost:8000",
-    "https://zulema1904.github.io",
+    "https://zulemagutierrez.com",
+    "https://www.zulemagutierrez.com",
 ]
 
 

@@ -1,6 +1,6 @@
 [project]
 name = "zulemaos-monitor"
-version = "0.2.0"
+version = "0.2.1"
 description = "Monitor de sistema en tiempo real con FastAPI, WebSocket y psutil, con interfaz web retro."
 readme = "README.md"
 requires-python = ">=3.10"

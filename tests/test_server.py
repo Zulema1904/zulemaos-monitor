@@ -46,8 +46,9 @@ def test_websocket_sends_hello_then_metrics(client):
 
 
 def test_cors_allows_portfolio_only(client):
-    ok = client.get("/api/system", headers={"Origin": "https://zulema1904.github.io"})
-    assert ok.headers.get("access-control-allow-origin") == "https://zulema1904.github.io"
+    for web in ("https://zulemagutierrez.com", "https://www.zulemagutierrez.com"):
+        ok = client.get("/api/system", headers={"Origin": web})
+        assert ok.headers.get("access-control-allow-origin") == web
 
     other = client.get("/api/system", headers={"Origin": "https://otra-web.example"})
     assert "access-control-allow-origin" not in other.headers
