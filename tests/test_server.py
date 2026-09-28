@@ -54,6 +54,19 @@ def test_cors_allows_portfolio_only(client):
     assert "access-control-allow-origin" not in other.headers
 
 
+def test_websocket_rejects_other_websites(client):
+    from starlette.websockets import WebSocketDisconnect
+
+    for web in ("https://zulemagutierrez.com", "http://127.0.0.1:8000", "http://testserver"):
+        with client.websocket_connect("/ws/metrics", headers={"Origin": web}) as ws:
+            assert ws.receive_json()["type"] == "hello"
+
+    with pytest.raises(WebSocketDisconnect) as err:
+        with client.websocket_connect("/ws/metrics", headers={"Origin": "https://otra-web.example"}) as ws:
+            ws.receive_json()
+    assert err.value.code == 1008
+
+
 def test_web_interface_is_served(client):
     r = client.get("/")
     assert r.status_code == 200

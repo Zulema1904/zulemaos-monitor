@@ -116,8 +116,20 @@ def get_history() -> list[dict]:
     return list(hub.history)
 
 
+def origin_allowed(ws: WebSocket) -> bool:
+    """El CORS no protege los WebSocket: sin esto, cualquier web abierta en el navegador
+    podría leer los procesos y el nombre del equipo mientras el monitor está en marcha."""
+    origin = ws.headers.get("origin")
+    if origin is None:  # no viene de un navegador (scripts, tests)
+        return True
+    return origin in ALLOWED_ORIGINS or origin == f"http://{ws.headers.get('host', '')}"
+
+
 @app.websocket("/ws/metrics")
 async def ws_metrics(ws: WebSocket) -> None:
+    if not origin_allowed(ws):
+        await ws.close(code=1008)  # 1008 = rechazada por política
+        return
     await ws.accept()
     hub.clients.add(ws)
     try:
