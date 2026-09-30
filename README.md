@@ -106,4 +106,4 @@ tests/           pytest
 
 ---
 
-Hecho por **Zulema Gutiérrez** · [Portfolio](https://zulemagutierrez.com) · [LinkedIn](https://www.linkedin.com/in/zulema-guti%C3%A9rrez)
+Hecho por **Zulema Gutiérrez** · [Portfolio](https://zulemagutierrez.com) · [LinkedIn](https://www.linkedin.com/in/zulema-gutierrez)
