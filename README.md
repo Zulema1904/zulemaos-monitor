@@ -107,3 +107,7 @@ tests/           pytest
 ---
 
 Hecho por **Zulema Gutiérrez** · [Portfolio](https://zulemagutierrez.com) · [LinkedIn](https://www.linkedin.com/in/zulema-gutierrez)
+
+## Licencia
+
+Código bajo licencia [MIT](LICENSE).
